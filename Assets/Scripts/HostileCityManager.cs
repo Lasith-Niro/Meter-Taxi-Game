@@ -86,8 +86,6 @@ namespace GRIDCITY
 					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);                 
 				}
 			}
-
-			
 		}
 		
 		#endregion
@@ -99,7 +97,6 @@ namespace GRIDCITY
 			{
 				return cityArray[x, y, z];
 			}
-
 		}
 
 		public void SetSlot(int x, int y, int z, bool occupied)

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class test_turret : MonoBehaviour
@@ -14,17 +15,17 @@ public class test_turret : MonoBehaviour
     [Header("Gun Attributes")]
     public Transform gunXform;
     public float turnSpeed = 10f;
-
-
     public GameObject bulletPrefab;
     // add custom fire point
     public Transform firePoint;
+
+    private int milliseconds = 2000;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
     // Update is called once per frame

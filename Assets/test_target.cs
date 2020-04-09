@@ -5,12 +5,12 @@ using UnityEngine;
 public class test_target : MonoBehaviour
 {
     public Camera camera;
-    private Vector3 targetPosition;
     public Transform target;
     public LayerMask raycastMask;
     public float range = 10f;
 
 
+    private Vector3 targetPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,16 @@ public class test_target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray screenRay = camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(screenRay, out hit, range))
+        if (camera.tag == "GameCamera")
         {
-            targetPosition = hit.point;
+            Ray screenRay = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(screenRay, out hit, range))
+            { 
+                targetPosition = hit.point;
+            }
+            HandleTarget();
         }
-        HandleTarget();
 
     }
     protected virtual void HandleTarget()
