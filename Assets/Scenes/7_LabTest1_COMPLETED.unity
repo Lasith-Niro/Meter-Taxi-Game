@@ -910,7 +910,11 @@ MonoBehaviour:
   slerpAnimate: 1
   slerpSpeed: 1
   countdownText: {fileID: 0}
+  scoreText: {fileID: 0}
   countdown: 5
+  cam1: {fileID: 0}
+  cam2: {fileID: 0}
+  score: 0
 --- !u!4 &2027932580
 Transform:
   m_ObjectHideFlags: 0
