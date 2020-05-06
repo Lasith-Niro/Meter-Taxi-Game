@@ -7,6 +7,9 @@ TagManager:
   - Target
   - HostileBlock
   - GameCamera
+  - Passenger_Enter
+  - spawnPoint
+  - spawn
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - 
   - Buildings
   - Bullets
-  - 
+  - Passenger
   - 
   - 
   - 
