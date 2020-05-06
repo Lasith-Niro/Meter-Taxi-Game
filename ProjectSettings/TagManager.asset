@@ -10,6 +10,8 @@ TagManager:
   - Passenger_Enter
   - spawnPoint
   - spawn
+  - End
+  - Start
   layers:
   - Default
   - TransparentFX
