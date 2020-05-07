@@ -12,16 +12,6 @@ public class GameController : MonoBehaviour
     public bool slerpAnimate = false;
     public float slerpSpeed = 1.0f;
 
-    public Text countdownText;
-    public Text scoreText;
-    public float countdown = 5f;
-
-    [Header("Cameras")]
-    public Camera cam1;
-    public Camera cam2;
-
-    [Header("Score")]
-    public int score = 0;
 
     #endregion
 
@@ -60,21 +50,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = score.ToString();
+        
         if (slerpAnimate)
         {
             interpolator = 0.5f * Mathf.Sin(Time.time * slerpSpeed) + 0.5f;
         }
-        countdown -= Time.deltaTime;
-        if (countdown <= 0)
-        {
-            Destroy(countdownText);
-            countdown = 0;
-        }
-        else
-        {
-            countdownText.text = Mathf.Floor(countdown).ToString();
-        }
+        
 
     }
 

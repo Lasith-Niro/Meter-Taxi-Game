@@ -19,7 +19,7 @@ public class test_turret : MonoBehaviour
     // add custom fire point
     public Transform firePoint;
 
-    private int milliseconds = 2000;
+    //private int milliseconds = 2000;
 
 
     // Start is called before the first frame update

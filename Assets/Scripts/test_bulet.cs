@@ -65,7 +65,7 @@ public class test_bulet : MonoBehaviour
             {
                 print("HIT");
                 hitOnce = true;
-                gameController.score++;
+                //gameController.score++;
             }
         }
         else

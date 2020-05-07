@@ -84,7 +84,8 @@ public class TaxiController : MonoBehaviour
         if (collision.gameObject.tag == "End")
         {
             //Destroy
-            Debug.Log("Start timer!!!");
+
+            Debug.Log("End timer!!!");
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             SpawnRandom(startPoint, oldGO, true);

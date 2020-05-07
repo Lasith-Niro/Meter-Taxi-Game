@@ -14,6 +14,10 @@ namespace GRIDCITY
 		public BuildingProfile[] profileArray;
 		public BuildingProfile wallProfile;
 
+		[Header("Countdown")]
+		public bool countdownDone = false;
+
+
 
 		private bool[,,] cityArray = new bool [20,20,20];   //increased array size to allow for larger city volume
 
@@ -47,45 +51,49 @@ namespace GRIDCITY
 		}
 		
 		// Use this for external initialization
-		void Start ()
+		void Update ()
 		{
 
-			//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
-			for (int ix = -1; ix < 2; ix++)
+			if (countdownDone==true)
 			{
-				int iz = -7;
-				for (int iy = 0; iy < 3; iy++)
+				//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
+				for (int ix = -1; ix < 2; ix++)
 				{
-					SetSlot(ix + 7, iy, iz + 7, true);
+					int iz = -7;
+					for (int iy = 0; iy < 3; iy++)
+					{
+						SetSlot(ix + 7, iy, iz + 7, true);
+					}
+				}
+
+
+				/*
+				//BUILD CITY WALLS
+
+				for (int i = -7; i < 8; i += 14)
+				{
+					for (int j = -7; j < 8; j += 1)
+					{
+						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
+					}
+					for (int j = -6; j < 7; j += 1)
+					{
+						Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
+					}
+				}
+				*/
+
+				//CITY BUILDINGS:
+				for (int i = -4; i < 5; i += 2)
+				{
+					for (int j = -4; j < 5; j += 2)
+					{
+						int random = Random.Range(0, profileArray.Length);
+						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);
+					}
 				}
 			}
 			
-
-			/*
-			//BUILD CITY WALLS
-
-			for (int i = -7; i < 8; i += 14)
-			{
-				for (int j = -7; j < 8; j += 1)
-				{
-					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-				}
-				for (int j = -6; j < 7; j += 1)
-				{
-					Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-				}
-			}
-			*/
-
-			//CITY BUILDINGS:
-			for (int i = -4; i < 5; i += 2)
-			{
-				for (int j = -4; j < 5; j += 2)
-				{
-					int random = Random.Range(0, profileArray.Length);
-					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);                 
-				}
-			}
 		}
 		
 		#endregion
