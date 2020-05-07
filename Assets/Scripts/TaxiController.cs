@@ -104,7 +104,7 @@ public class TaxiController : MonoBehaviour
         if (collision.gameObject.tag == "Start")
         {
             Debug.Log("Start timer!!!");
-            predictedTime = GetRandom(10, 15);
+            predictedTime = GetRandom(4, 12);
             startTime = System.DateTime.UtcNow;
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
