@@ -26,6 +26,11 @@ public class TaxiController : MonoBehaviour
     private DateTime endTime;
     private int predictedTime; // 4-15
 
+    [Header("Timer")]
+    public Slider timeBar;
+    private bool timeStart = false;
+    private float timeLeft;
+
     #endregion
 
     private void Start()
@@ -36,6 +41,18 @@ public class TaxiController : MonoBehaviour
     private void Update()
     {
         //startPoint = GameObject.FindGameObjectWithTag("Start");
+        if (timeStart)
+        {
+            timeBar.gameObject.SetActive(true);
+            timeBar.maxValue = predictedTime;
+
+            timeLeft -= Time.deltaTime;
+            timeBar.value = timeLeft;
+        }
+        else
+        {
+            timeBar.gameObject.SetActive(false);
+        }
     }
 
     int GetRandom(int count)
@@ -56,12 +73,7 @@ public class TaxiController : MonoBehaviour
 
     private void SpawnRandom(GameObject obj, GameObject go, bool sleep)
     {
-        //random1 = GetRandom(endPassengers.Length);
         random2 = GetRandom(spawnPoints.Length);
-        
-        //int index = Array.FindIndex(spawnPoints, x => x == go); // https://stackoverflow.com/questions/17995706/how-to-get-the-index-of-an-item-in-a-list-in-a-single-step
-        //Debug.Log(index);
-        //tempPoints = spawnPoints.Skip(index).Take(spawnPoints.Length - 1).ToArray(); // https://stackoverflow.com/questions/943635/getting-a-sub-array-from-an-existing-array
         randomTransform = spawnPoints[random2].transform;
         if (sleep)
         {
@@ -85,19 +97,25 @@ public class TaxiController : MonoBehaviour
     {
         SpawnRandom(obj, go, false);
     }
+
+
     private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(collision.gameObject.tag);
-        
-            
+    {   
         if (collision.gameObject.tag == "Start")
         {
             Debug.Log("Start timer!!!");
-            predictedTime = GetRandom(4, 15);
+            predictedTime = GetRandom(10, 15);
             startTime = System.DateTime.UtcNow;
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             AssignDestination(endPoint, oldGO);
+
+            // start timer
+            
+            timeStart = true;
+            timeLeft = predictedTime;
+
+
         }
 
         if (collision.gameObject.tag == "End")
@@ -119,6 +137,9 @@ public class TaxiController : MonoBehaviour
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             SpawnRandom(startPoint, oldGO, true);
+
+
+            timeStart = false;
         }
     }
 

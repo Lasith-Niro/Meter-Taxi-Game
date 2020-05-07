@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public Slider slider;
+    public Slider healthBar;
     public int maxHealth = 10;
     private int health;
     private void Start()
@@ -39,12 +39,12 @@ public class HealthController : MonoBehaviour
 
     public void SetMaxHealth (int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        healthBar.maxValue = health;
+        healthBar.value = health;
     }
     public void UpdateHealth(int health)
     {
-        slider.value = health;
+        healthBar.value = health;
     }
     
 }
