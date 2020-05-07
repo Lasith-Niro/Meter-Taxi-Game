@@ -66,10 +66,7 @@ public class TaxiController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.tag);
-        if(collision.gameObject.tag == "HostileBlock")
-        {
-            //reduce health
-        }
+        
             
         if (collision.gameObject.tag == "Start")
         {
