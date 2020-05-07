@@ -13,6 +13,7 @@ namespace GRIDCITY
 		public GameObject buildingPrefab;
 		public BuildingProfile[] profileArray;
 		public BuildingProfile wallProfile;
+		public GameObject[] userinterfeses;
 
 		[Header("Countdown")]
 		public bool countdownDone = false;
@@ -41,7 +42,9 @@ namespace GRIDCITY
 		#region Unity Methods
 
 		// Use this for internal initialization
-		void Awake () {
+		void Awake () 
+		{
+			
 			vehicle.active = false;
 			if (_instance == null)
 			{
@@ -58,10 +61,17 @@ namespace GRIDCITY
 		// Use this for external initialization
 		void Start ()
 		{
+			/*
+			userinterfeses = GameObject.FindGameObjectsWithTag("interfaces");
+			foreach (GameObject userinterface in userinterfeses)
+			{
+				Debug.Log(userinterface.name);
+				userinterface.SetActive(true);
+			}
+			*/
 
-			
-				//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
-				for (int ix = -1; ix < 2; ix++)
+			//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
+			for (int ix = -1; ix < 2; ix++)
 				{
 					int iz = -7;
 					for (int iy = 0; iy < 3; iy++)

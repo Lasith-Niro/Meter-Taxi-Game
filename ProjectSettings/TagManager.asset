@@ -12,6 +12,7 @@ TagManager:
   - spawn
   - End
   - Start
+  - interfaces
   layers:
   - Default
   - TransparentFX
