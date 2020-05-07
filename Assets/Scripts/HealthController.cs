@@ -21,7 +21,7 @@ public class HealthController : MonoBehaviour
 
             //reduce health
             health -= 1;
-            SetHealth(health);
+            UpdateHealth(health);
             StartCoroutine(DestroyBuildings(collision.gameObject, 3.0f));
 
             if (health == 5)
@@ -42,7 +42,7 @@ public class HealthController : MonoBehaviour
         slider.maxValue = health;
         slider.value = health;
     }
-    public void SetHealth(int health)
+    public void UpdateHealth(int health)
     {
         slider.value = health;
     }

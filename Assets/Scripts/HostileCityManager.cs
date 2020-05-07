@@ -18,6 +18,10 @@ namespace GRIDCITY
 		public bool countdownDone = false;
 
 
+		[Header("Vehicle")]
+		public GameObject vehicle;
+
+
 
 		private bool[,,] cityArray = new bool [20,20,20];   //increased array size to allow for larger city volume
 
@@ -38,6 +42,7 @@ namespace GRIDCITY
 
 		// Use this for internal initialization
 		void Awake () {
+			vehicle.active = false;
 			if (_instance == null)
 			{
 				_instance = this;
@@ -51,11 +56,10 @@ namespace GRIDCITY
 		}
 		
 		// Use this for external initialization
-		void Update ()
+		void Start ()
 		{
 
-			if (countdownDone==true)
-			{
+			
 				//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
 				for (int ix = -1; ix < 2; ix++)
 				{
@@ -92,10 +96,15 @@ namespace GRIDCITY
 						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);
 					}
 				}
-			}
-			
 		}
-		
+
+		private void Update()
+		{
+			if (countdownDone == true)
+			{
+				vehicle.active = true;
+			}
+		}
 		#endregion
 
 		public bool CheckSlot(int x, int y, int z)

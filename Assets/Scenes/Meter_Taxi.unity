@@ -1349,12 +1349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1500326093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2540721299605341958, guid: a9e96dcc67767934c8bdda6155e3bb63,
-    type: 3}
-  m_PrefabInstance: {fileID: 34805431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517013002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,10 +1518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5938e4bf4f696478c656f68d471988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 1500326093}
-  speed: 10
-  dist: {x: 0, y: 0.36, z: -0.81}
-  lookTarget: {fileID: 2079626461}
+  player: {fileID: 586931612}
+  cameraDistance: 2
 --- !u!1 &1721624743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,6 +1836,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e18ceacb4be56d448888cc6442b9209, type: 2}
   wallProfile: {fileID: 11400000, guid: 87ae1c9e30494de4286d03d35e33cdac, type: 2}
   countdownDone: 0
+  vehicle: {fileID: 586931612}
 --- !u!4 &1844594821
 Transform:
   m_ObjectHideFlags: 0
@@ -1998,9 +1991,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2079626461 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2540721300422777817, guid: a9e96dcc67767934c8bdda6155e3bb63,
-    type: 3}
-  m_PrefabInstance: {fileID: 34805431}
-  m_PrefabAsset: {fileID: 0}

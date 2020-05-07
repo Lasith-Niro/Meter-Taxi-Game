@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class VehicleFollow : MonoBehaviour
 {
-    public Transform vehicle;
-    public float speed = 10.0f;
-    public Vector3 dist;
-    public Transform lookTarget;
+    public GameObject player;
+    public float cameraDistance = 2.0f;
 
-    private void LateUpdate()
+    // Use this for initialization
+    void Start()
     {
-        Vector3 dPosition = vehicle.position + dist;
-        Vector3 sPosition = Vector3.Lerp(transform.position, dPosition, speed * Time.deltaTime);
-        transform.position = sPosition;
-        transform.LookAt(lookTarget.position);
     }
 
+    void LateUpdate()
+    {
+        transform.position = player.transform.position - player.transform.forward * cameraDistance;
+        transform.LookAt(player.transform.position);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+    }
 }

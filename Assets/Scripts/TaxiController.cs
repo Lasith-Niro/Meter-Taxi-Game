@@ -80,6 +80,11 @@ public class TaxiController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Instantiate(obj, newtransform.position, newtransform.rotation);
     }
+
+    private void AssignDestination(GameObject obj, GameObject go)
+    {
+        SpawnRandom(obj, go, false);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.tag);
@@ -92,7 +97,7 @@ public class TaxiController : MonoBehaviour
             startTime = System.DateTime.UtcNow;
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
-            SpawnRandom(endPoint, oldGO, false);
+            AssignDestination(endPoint, oldGO);
         }
 
         if (collision.gameObject.tag == "End")
