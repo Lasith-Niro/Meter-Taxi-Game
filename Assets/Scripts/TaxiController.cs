@@ -62,8 +62,6 @@ public class TaxiController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Instantiate(obj, newtransform.position, newtransform.rotation);
-
-
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -81,12 +79,6 @@ public class TaxiController : MonoBehaviour
             Destroy(collision.gameObject);
             
             SpawnRandom(endPoint, oldGO, false);
-            //delay
-            //spawn end trip
-
-            
-        //spawn new trip    
-        //StartCoroutine(SpawnWithDelay(startPoint));
         }
 
         if (collision.gameObject.tag == "End")
@@ -96,12 +88,6 @@ public class TaxiController : MonoBehaviour
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             SpawnRandom(startPoint, oldGO, true);
-            //delay
-            //spawn end trip
-
-
-            //spawn new trip    
-            //StartCoroutine(SpawnWithDelay(startPoint));
         }
     }
 }
