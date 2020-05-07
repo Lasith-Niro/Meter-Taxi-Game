@@ -22,7 +22,7 @@ public class HealthController : MonoBehaviour
             //reduce health
             health -= 1;
             SetHealth(health);
-            DestroyBuildings(collision.gameObject, 3.0f);
+            StartCoroutine(DestroyBuildings(collision.gameObject, 3.0f));
 
             if (health == 5)
             {

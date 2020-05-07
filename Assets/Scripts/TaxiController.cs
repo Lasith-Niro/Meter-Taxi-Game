@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaxiController : MonoBehaviour
 {
+    #region variables
     public GameObject startPoint;
     public GameObject endPoint;
     public GameObject[] spawnPoints;
@@ -16,6 +18,15 @@ public class TaxiController : MonoBehaviour
 
     private int random2;
     private Transform randomTransform;
+
+    [Header("Earnings")]
+    public int earnings = 0;
+    public Text showEarnings;
+    private DateTime startTime;
+    private DateTime endTime;
+    private int predictedTime; // 4-15
+
+    #endregion
 
     private void Start()
     {
@@ -30,6 +41,12 @@ public class TaxiController : MonoBehaviour
     int GetRandom(int count)
     {
         return UnityEngine.Random.Range(0, count);
+    }
+
+    // method overloading
+    int GetRandom(int low, int high)
+    {
+        return UnityEngine.Random.Range(low, high);
     }
 
     Vector3 GetRandomVector(Vector3 vec)
@@ -70,22 +87,54 @@ public class TaxiController : MonoBehaviour
             
         if (collision.gameObject.tag == "Start")
         {
-            //Destroy
             Debug.Log("Start timer!!!");
+            predictedTime = GetRandom(4, 15);
+            startTime = System.DateTime.UtcNow;
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
-            
             SpawnRandom(endPoint, oldGO, false);
         }
 
         if (collision.gameObject.tag == "End")
         {
             //Destroy
-
             Debug.Log("End timer!!!");
+            endTime = System.DateTime.UtcNow;
+
+            TimeSpan ts = endTime - startTime;
+            int timeDiff = (int)ts.TotalSeconds;
+            int earn = CalculateEarnings(predictedTime, timeDiff, 20);
+            earnings += earn;
+            showEarnings.text = earnings.ToString("000");
+            /*
+            Debug.Log("predictedTime:   " + predictedTime);
+            Debug.Log("timeDiff:    "+  timeDiff);
+            Debug.Log("earn:    "+ earn);
+            */
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             SpawnRandom(startPoint, oldGO, true);
         }
+    }
+
+    public int CalculateEarnings(int predictedTime, int timeDiff, int baseCost)
+    {
+        if (timeDiff < predictedTime)
+        {
+            return baseCost;
+        }
+        else
+        {
+            //Debug.Log("Calculating linear function");
+            return LinearEquation(timeDiff, baseCost);
+        }
+    }
+
+    // y − y1 = m(x − x1)
+    private int LinearEquation(int timeDiff, int baseCost)
+    {
+        double y = (-0.85 * (timeDiff - 8)) + baseCost;
+        Debug.Log(y);
+        return (int)y;
     }
 }
