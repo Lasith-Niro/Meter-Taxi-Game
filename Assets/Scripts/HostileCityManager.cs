@@ -44,8 +44,8 @@ namespace GRIDCITY
 		// Use this for internal initialization
 		void Awake () 
 		{
-			
-			vehicle.active = false;
+			vehicle.SetActive(false);
+			//vehicle.active = false;
 			if (_instance == null)
 			{
 				_instance = this;
@@ -61,6 +61,7 @@ namespace GRIDCITY
 		// Use this for external initialization
 		void Start ()
 		{
+			FindObjectOfType<AudioManager>().Play("CarStart");
 			/*
 			userinterfeses = GameObject.FindGameObjectsWithTag("interfaces");
 			foreach (GameObject userinterface in userinterfeses)
@@ -112,7 +113,7 @@ namespace GRIDCITY
 		{
 			if (countdownDone == true)
 			{
-				vehicle.active = true;
+				vehicle.SetActive( true);
 			}
 		}
 		#endregion

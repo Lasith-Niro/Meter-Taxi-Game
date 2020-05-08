@@ -35,6 +35,7 @@ public class TaxiController : MonoBehaviour
 
     private void Start()
     {
+        
         spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
     }
 
@@ -156,10 +157,10 @@ public class TaxiController : MonoBehaviour
         }
     }
 
-    // y − y1 = m(x − x1)
+    // y − y1 = -m(x − x1)
     private int LinearEquation(int timeDiff, int baseCost)
     {
-        double y = (-0.85 * (timeDiff - 8)) + baseCost;
+        double y = (-0.85 * timeDiff) + baseCost;
         Debug.Log(y);
         return (int)y;
     }

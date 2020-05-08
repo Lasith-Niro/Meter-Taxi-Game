@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 7365848576731317698, guid: a9e96dcc67767934c8bdda6155e3bb63,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7365848576731317698, guid: a9e96dcc67767934c8bdda6155e3bb63,
         type: 3}
@@ -687,7 +687,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 165.75, y: 1283.7, z: 0}
 --- !u!1 &813220667
 GameObject:
@@ -1053,7 +1053,7 @@ Transform:
   - {fileID: 1792691294}
   - {fileID: 969096177}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905843305
 GameObject:
@@ -1119,7 +1119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906302022
 GameObject:
@@ -1294,22 +1294,22 @@ PrefabInstance:
     - target: {fileID: 9186564262500406843, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 7.43e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9186564262500406843, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -7.109141e+28
+      value: 2.3510647e-38
       objectReference: {fileID: 0}
     - target: {fileID: 9186564262500406843, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -7.1087407e+28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9186564262500406843, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 4.5904e-41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9186564263286804698, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
@@ -1354,7 +1354,7 @@ PrefabInstance:
     - target: {fileID: 9186564263286804699, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9186564263286804699, guid: b103d51d97ec8034498c6fed4afdfad3,
         type: 3}
@@ -1808,7 +1808,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1293263740
 GameObject:
@@ -1976,6 +1976,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364120489}
   m_CullTransparentMesh: 0
+--- !u!1 &1440229920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440229921}
+  - component: {fileID: 1440229922}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1440229921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440229920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1440229922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440229920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dfb277ff735b047a9c0d7f5afad3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: CarStart
+    clip: {fileID: 8300000, guid: da790a363baf6f4458cd17bf9ddde6d2, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CarDrive
+    clip: {fileID: 8300000, guid: 49087d9448f2f3d41a6694c9952cec92, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: NextGear
+    clip: {fileID: 8300000, guid: ee7d90ac5202eb844916c5971ca589c0, type: 3}
+    volume: 0.13
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1446956404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509529616
 GameObject:
@@ -2462,7 +2524,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 8.301001, y: 6.892, z: 1}
 --- !u!114 &1604203830
 MonoBehaviour:
@@ -2653,7 +2715,7 @@ RectTransform:
   - {fileID: 1656785653}
   - {fileID: 199145467}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2915,7 +2977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1844594822
 MonoBehaviour:
@@ -3140,7 +3202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2027932581
 SpriteRenderer:
@@ -3221,5 +3283,5 @@ Transform:
   m_Children:
   - {fileID: 1207145259}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
