@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Meter-Taxi-Game/Meter_Taxi.unity
     guid: 12de281540d78d843bf2c611270ecd35
+  - enabled: 1
+    path: Assets/Scenes/Meter-Taxi-Game/Menu.unity
+    guid: c55d5e462940b5343969206540aa37de
   m_configObjects: {}

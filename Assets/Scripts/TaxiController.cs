@@ -81,7 +81,7 @@ public class TaxiController : MonoBehaviour
             // start a new ride
             StartCoroutine(SpawnWithDelay(obj, randomTransform, nextDelay));
             FindObjectOfType<AudioManager>().Play("Spawn");
-            FindObjectOfType<AudioManager>().Play("NextPassengerReady");
+            StartCoroutine(NextPassenger());
         }
         else
         {
@@ -93,6 +93,11 @@ public class TaxiController : MonoBehaviour
         }
     }
 
+    public IEnumerator NextPassenger()
+    {
+        yield return new WaitForSeconds(3.0f);
+        FindObjectOfType<AudioManager>().Play("NextPassengerReady");
+    }
     public IEnumerator SpawnWithDelay(GameObject obj, Transform newtransform, float delay)
     {
         yield return new WaitForSeconds(delay);

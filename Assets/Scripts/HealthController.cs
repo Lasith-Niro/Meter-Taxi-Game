@@ -9,6 +9,11 @@ public class HealthController : MonoBehaviour
     public Slider healthBar;
     public int maxHealth = 5;
     private int health;
+
+    public DeathMenu deathMenu;
+    public GameObject vehicle;
+
+
     private void Start()
     {
         SetMaxHealth(maxHealth);
@@ -32,11 +37,18 @@ public class HealthController : MonoBehaviour
             }
             StartCoroutine(DestroyBuildings(collision.gameObject, 2.0f));
 
-            if (health == 5)
+            if (health == 0)
             {
-                Debug.Log("End Game Here");
+                OnDeath();
             }
         }   
+    }
+
+    private void OnDeath()
+    {
+        Debug.Log("End Game Here");
+        deathMenu.ToggleDeathMenu();
+        vehicle.SetActive(false);
     }
 
     public IEnumerator DestroyBuildings(GameObject obj, float delay)
