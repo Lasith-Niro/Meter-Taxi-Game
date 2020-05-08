@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HealthController : MonoBehaviour
 {
     public Slider healthBar;
-    public int maxHealth = 10;
+    public int maxHealth = 5;
     private int health;
     private void Start()
     {
@@ -18,11 +18,19 @@ public class HealthController : MonoBehaviour
     {
         if (collision.gameObject.tag == "HostileBlock")
         {
-
             //reduce health
             health -= 1;
             UpdateHealth(health);
-            StartCoroutine(DestroyBuildings(collision.gameObject, 3.0f));
+
+            if (health == 3)
+            {
+                FindObjectOfType<AudioManager>().Play("BeCareful");
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("CarCrash");
+            }
+            StartCoroutine(DestroyBuildings(collision.gameObject, 2.0f));
 
             if (health == 5)
             {
@@ -37,14 +45,14 @@ public class HealthController : MonoBehaviour
         Destroy(obj);
     }
 
-    public void SetMaxHealth (int health)
+    public void SetMaxHealth (int value)
     {
-        healthBar.maxValue = health;
-        healthBar.value = health;
+        healthBar.maxValue = value;
+        healthBar.value = value;
     }
-    public void UpdateHealth(int health)
+    public void UpdateHealth(int value)
     {
-        healthBar.value = health;
+        healthBar.value = value;
     }
     
 }

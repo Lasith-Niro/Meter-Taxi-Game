@@ -35,7 +35,7 @@ public class TaxiController : MonoBehaviour
 
     private void Start()
     {
-        
+        FindObjectOfType<AudioManager>().Play("CarDrive");
         spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
     }
 
@@ -80,10 +80,15 @@ public class TaxiController : MonoBehaviour
         {
             // start a new ride
             StartCoroutine(SpawnWithDelay(obj, randomTransform, nextDelay));
+            FindObjectOfType<AudioManager>().Play("Spawn");
+            FindObjectOfType<AudioManager>().Play("NextPassengerReady");
         }
         else
         {
             // the destination
+
+            
+            FindObjectOfType<AudioManager>().Play("FollowTheMap");
             StartCoroutine(SpawnWithDelay(obj, randomTransform, 0));
         }
     }
@@ -138,6 +143,8 @@ public class TaxiController : MonoBehaviour
             GameObject oldGO = collision.gameObject;
             Destroy(collision.gameObject);
             SpawnRandom(startPoint, oldGO, true);
+            
+
 
 
             timeStart = false;
@@ -148,6 +155,7 @@ public class TaxiController : MonoBehaviour
     {
         if (timeDiff < predictedTime)
         {
+            FindObjectOfType<AudioManager>().Play("NiceRide");
             return baseCost;
         }
         else
