@@ -13,6 +13,7 @@ public class HealthController : MonoBehaviour
     public DeathMenu deathMenu;
     public GameObject vehicle;
 
+    private int hitOnVehicle = 0;
 
     private void Start()
     {
@@ -41,7 +42,17 @@ public class HealthController : MonoBehaviour
             {
                 OnDeath();
             }
-        }   
+        }
+        else if (collision.gameObject.tag == "AI_Car")
+        {
+            Debug.Log("Hit on Vehicle");
+            hitOnVehicle++;
+            if (hitOnVehicle == 3)
+            {
+                health--;
+                hitOnVehicle = 0;
+            }
+        }
     }
 
     private void OnDeath()

@@ -14,7 +14,7 @@ public class SelfController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = UnityEngine.Random.Range(0, 4);
+        speed = UnityEngine.Random.Range(2, 6);
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
 
@@ -36,6 +36,7 @@ public class SelfController : MonoBehaviour
         if(Vector3.Distance(transform.position, nodes[rand].position) < 0.2f)
         {
             rand = UnityEngine.Random.Range(0, nodes.Count);
+            speed = UnityEngine.Random.Range(2, 6);
         }
     }
 }

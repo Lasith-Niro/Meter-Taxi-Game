@@ -13,6 +13,7 @@ TagManager:
   - End
   - Start
   - interfaces
+  - AI_Car
   layers:
   - Default
   - TransparentFX

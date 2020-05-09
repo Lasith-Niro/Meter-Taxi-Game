@@ -8,12 +8,28 @@ public class PathAI : MonoBehaviour
     public Color lineColor;
 
     public GameObject aiCar;
+    public int numberOfCars;
     
     private List<Transform> nodes = new List<Transform>();
 
     private void Start()
     {
-        Instantiate(aiCar, transform.position, transform.rotation);
+        Transform[] pathTransforms = GetComponentsInChildren<Transform>();
+        nodes = new List<Transform>();
+        for (int j = 0; j < pathTransforms.Length; j++)
+        {
+            if (pathTransforms[j] != transform)
+            {
+                nodes.Add(pathTransforms[j]);
+            }
+        }
+        int i = 0;
+        while (i < numberOfCars)
+        {
+            int rand = UnityEngine.Random.Range(0, nodes.Count);
+            Instantiate(aiCar, nodes[rand].position, transform.rotation);
+            i++;
+        }
     }
     private void OnDrawGizmosSelected()
     {
