@@ -39,4 +39,15 @@ public class SelfController : MonoBehaviour
             speed = UnityEngine.Random.Range(2, 6);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "HostileBlock")
+        {
+            Debug.Log("car accident");
+            //Destroy(gameObject);
+            //Instantiate(gameObject, nodes[rand].position, transform.rotation);
+
+        }
+    }
 }

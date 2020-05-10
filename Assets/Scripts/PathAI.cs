@@ -31,6 +31,8 @@ public class PathAI : MonoBehaviour
             i++;
         }
     }
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = lineColor;

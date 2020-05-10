@@ -16,6 +16,11 @@ public class DeathMenu : MonoBehaviour
     public void ToggleDeathMenu()
     {
         gameObject.SetActive(true);
+        FindObjectOfType<AudioManager>().Stop("Background");
+        FindObjectOfType<AudioManager>().Stop("CarDrive");
+        FindObjectOfType<AudioManager>().Stop("CarCrash");
+        FindObjectOfType<AudioManager>().Play("End");
+
     }
 
     public void LoadMenu()
