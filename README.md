@@ -3,8 +3,16 @@
 
 ## Youtube Demo
 
-[Meter Taxi Game Demo on YouTube](https://youtu.be/KPYMvRi82Io)
+[Meter Taxi Game Demo on YouTube](https://youtu.be/BKwgk-cRWt0)
 
+
+## Game Instructions
+* w / up arrow -  move forward
+* s / down arrow - move backward
+* a / left arrow - turn left
+* d / right arrow - turn right
+* esc - pause the game 
+* Space - Toggle the mini map
 
 
 ## The Idea
@@ -29,4 +37,3 @@ left/right)
     - Engine
     - Power
   - Updating taxi health with the collisions.
-
