@@ -16,8 +16,9 @@ namespace GRIDCITY
 		public BuildingProfile wallProfile;
 		public GameObject[] userinterfeses;
 
+		[Header("Custom Settings")]
 		public GameObject GrassPrefab;
-
+		public GameObject RoadPrefab;
 
 		static int x, y;
 
@@ -72,61 +73,45 @@ namespace GRIDCITY
 
 			FindObjectOfType<AudioManager>().Play("CarStart");
 
-
+			// MAKE PARK IN RANDOM PLACE:
 			int randomPlace = Random.Range(-5, 0);
-
 			for (int i = randomPlace; i < 0; i += 1)
 			{
 				for (int j = randomPlace; j < 0; j += 1)
 				{
-					Instantiate(GrassPrefab, new Vector3(i, 0.05f, j), Quaternion.identity);
+					Instantiate(GrassPrefab, new Vector3(i, -0.09f, j), Quaternion.identity);
 					SetSlot(i + 7 , 0, j +7, true);
 				}
 			}
-		
-
-			/*
-			userinterfeses = GameObject.FindGameObjectsWithTag("interfaces");
-			foreach (GameObject userinterface in userinterfeses)
-			{
-				Debug.Log(userinterface.name);
-				userinterface.SetActive(true);
-			}
-
-			//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
-
-			for (int ix = -5; ix < 0; ix++)
-				{
-					int iz = -5;
-					for (int iy = -5; iy < 0; iy++)
-					{
-						SetSlot(ix + 7, iy, iz + 7, true);
-					}
-				}
-			//BUILD CITY WALLS
-
-			for (int i = -7; i < 8; i += 14)
-			{
-				for (int j = -7; j < 8; j += 1)
-				{
-					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-				}
-				for (int j = -6; j < 7; j += 1)
-				{
-					Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-				}
-			}
-			*/
-
+			
 			//CITY BUILDINGS:
 			for (int i = x; i < y; i += 2)
-				{ 
-					for (int j = x; j < y; j += 2)
-					{
-						int random = Random.Range(0, profileArray.Length);
-						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);
-					}
+			{ 
+				for (int j = x; j < y; j += 2)
+				{
+					int random = Random.Range(0, profileArray.Length);
+					Instantiate(buildingPrefab, new Vector3(i, 0.5f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);
+					SetSlot(i, 0, j, true);
 				}
+			}
+
+			// ROAD :
+			for (int i = x; i < y; i += 1)
+			{
+				for (int j = x; j < y; j += 1)
+				{
+					if (CheckSlot(i, 0, j) != true)
+					{
+						Debug.Log("place here");
+						Instantiate(RoadPrefab, new Vector3(i, -0.09f, j), Quaternion.identity)
+					}
+					/*
+					if (!CheckSlot(x + 2, 0, y + 2))
+					{
+					}
+					*/
+				}
+			}
 		}
 
 		private void Update()
