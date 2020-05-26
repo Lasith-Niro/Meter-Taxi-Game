@@ -19,7 +19,7 @@ namespace GRIDCITY
 
 		public BuildingProfile wallProfile;
 
-		private bool[,,] cityArray = new bool [15,15,15];   //increased array size to allow for larger city volume
+		private bool[,,] cityArray = new bool [30,30,30];   //increased array size to allow for larger city volume
 
 		public static CityManager Instance
 		{
@@ -77,7 +77,7 @@ namespace GRIDCITY
 				}
 			}
 			
-
+			*/
 			//CITY BUILDINGS:
 			
 			for (int i=-4;i<5;i+=2)
@@ -87,9 +87,7 @@ namespace GRIDCITY
 					int random = Random.Range(0, profileArray.Length);
 					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<DeluxeTowerBlock>().SetProfile(profileArray[random]);                 
 				}
-			}
-			*/
-			
+			}			
 		}
 		
 		#endregion

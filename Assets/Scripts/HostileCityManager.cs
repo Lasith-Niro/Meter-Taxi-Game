@@ -15,6 +15,9 @@ namespace GRIDCITY
 		public BuildingProfile wallProfile;
 		public GameObject[] userinterfeses;
 
+
+		static int x, y;
+
 		[Header("Countdown")]
 		public bool countdownDone = false;
 
@@ -22,9 +25,7 @@ namespace GRIDCITY
 		[Header("Vehicle")]
 		public GameObject vehicle;
 
-
-
-		private bool[,,] cityArray = new bool [20,20,20];   //increased array size to allow for larger city volume
+		private bool[,,] cityArray = new bool [50,50,50];   //increased array size to allow for larger city volume
 
 		public static HostileCityManager Instance
 		{
@@ -44,8 +45,8 @@ namespace GRIDCITY
 		// Use this for internal initialization
 		void Awake () 
 		{
+			
 			vehicle.SetActive(false);
-			//vehicle.active = false;
 			if (_instance == null)
 			{
 				_instance = this;
@@ -61,6 +62,8 @@ namespace GRIDCITY
 		// Use this for external initialization
 		void Start ()
 		{
+			int lvl = GameObject.Find("GameData").GetComponent<GameData>().GetMap();
+			LevelDecrypter(lvl, out x, out y);
 			FindObjectOfType<AudioManager>().Play("CarStart");
 			/*
 			userinterfeses = GameObject.FindGameObjectsWithTag("interfaces");
@@ -82,26 +85,26 @@ namespace GRIDCITY
 				}
 
 
-				/*
-				//BUILD CITY WALLS
+			/*
+			//BUILD CITY WALLS
 
-				for (int i = -7; i < 8; i += 14)
+			for (int i = -7; i < 8; i += 14)
+			{
+				for (int j = -7; j < 8; j += 1)
 				{
-					for (int j = -7; j < 8; j += 1)
-					{
-						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-					}
-					for (int j = -6; j < 7; j += 1)
-					{
-						Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
-					}
+					Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
 				}
-				*/
-
-				//CITY BUILDINGS:
-				for (int i = -4; i < 5; i += 2)
+				for (int j = -6; j < 7; j += 1)
 				{
-					for (int j = -4; j < 5; j += 2)
+					Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(wallProfile);
+				}
+			}
+			*/
+			
+				//CITY BUILDINGS:
+				for (int i = x; i < y; i += 2)
+				{
+					for (int j = x; j < y; j += 2)
 					{
 						int random = Random.Range(0, profileArray.Length);
 						Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<HostileTowerBlock>().SetProfile(profileArray[random]);
@@ -134,6 +137,29 @@ namespace GRIDCITY
 				cityArray[x, y, z] = occupied;
 			}
 
+		}
+
+		private void LevelDecrypter(int map, out int x, out int y)
+		{
+			switch (map)
+			{
+				case 1:
+					x = -5;
+					y = 5;
+					break;
+				case 2:
+					x = -6;
+					y = 6;
+					break;
+				case 3:
+					x = -7;
+					y = 7;
+					break;
+				default:
+					x = -5;
+					y = 5;
+					break;
+			}
 		}
 
 		#endregion
