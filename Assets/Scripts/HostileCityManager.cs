@@ -103,7 +103,7 @@ namespace GRIDCITY
 					if (CheckSlot(i, 0, j) != true)
 					{
 						Debug.Log("place here");
-						Instantiate(RoadPrefab, new Vector3(i, -0.09f, j), Quaternion.identity)
+						Instantiate(RoadPrefab, new Vector3(i, -0.09f, j), Quaternion.identity);
 					}
 					/*
 					if (!CheckSlot(x + 2, 0, y + 2))
