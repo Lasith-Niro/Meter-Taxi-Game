@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace GRIDCITY
@@ -15,6 +16,8 @@ namespace GRIDCITY
 		public BuildingProfile wallProfile;
 		public GameObject[] userinterfeses;
 
+		public GameObject GrassPrefab;
+
 
 		static int x, y;
 
@@ -25,7 +28,7 @@ namespace GRIDCITY
 		[Header("Vehicle")]
 		public GameObject vehicle;
 
-		private bool[,,] cityArray = new bool [50,50,50];   //increased array size to allow for larger city volume
+		private bool[,,] cityArray = new bool [20,20,20];   //increased array size to allow for larger city volume
 
 		public static HostileCityManager Instance
 		{
@@ -62,9 +65,26 @@ namespace GRIDCITY
 		// Use this for external initialization
 		void Start ()
 		{
+			// DEBUG
+			
 			int lvl = GameObject.Find("GameData").GetComponent<GameData>().GetMap();
 			LevelDecrypter(lvl, out x, out y);
+
 			FindObjectOfType<AudioManager>().Play("CarStart");
+
+
+			int randomPlace = Random.Range(-5, 0);
+
+			for (int i = randomPlace; i < 0; i += 1)
+			{
+				for (int j = randomPlace; j < 0; j += 1)
+				{
+					Instantiate(GrassPrefab, new Vector3(i, 0.05f, j), Quaternion.identity);
+					SetSlot(i + 7 , 0, j +7, true);
+				}
+			}
+		
+
 			/*
 			userinterfeses = GameObject.FindGameObjectsWithTag("interfaces");
 			foreach (GameObject userinterface in userinterfeses)
@@ -72,20 +92,17 @@ namespace GRIDCITY
 				Debug.Log(userinterface.name);
 				userinterface.SetActive(true);
 			}
-			*/
 
 			//UPDATING PLANNING ARRAY TO ACCOUNT FOR MANUALLY PLACED|CITY GATE
-			for (int ix = -1; ix < 2; ix++)
+
+			for (int ix = -5; ix < 0; ix++)
 				{
-					int iz = -7;
-					for (int iy = 0; iy < 3; iy++)
+					int iz = -5;
+					for (int iy = -5; iy < 0; iy++)
 					{
 						SetSlot(ix + 7, iy, iz + 7, true);
 					}
 				}
-
-
-			/*
 			//BUILD CITY WALLS
 
 			for (int i = -7; i < 8; i += 14)
@@ -100,10 +117,10 @@ namespace GRIDCITY
 				}
 			}
 			*/
-			
-				//CITY BUILDINGS:
-				for (int i = x; i < y; i += 2)
-				{
+
+			//CITY BUILDINGS:
+			for (int i = x; i < y; i += 2)
+				{ 
 					for (int j = x; j < y; j += 2)
 					{
 						int random = Random.Range(0, profileArray.Length);
